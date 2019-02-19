@@ -1,0 +1,24 @@
+.App {
+  font-family: Verdana, Geneva, Tahoma, sans-serif;
+  font-size: 14px;
+}
+
+li {
+  list-style: none;
+}
+
+input {
+  padding: 4px;
+  margin-left: 8px;
+  width: 300px;
+  border-radius: 3px;
+  border: 1px solid lightgray;
+}
+
+button {
+  padding: 4px;
+  width: 80px;
+  border-radius: 3px;
+  background-color: blue;
+  color: white;
+}
