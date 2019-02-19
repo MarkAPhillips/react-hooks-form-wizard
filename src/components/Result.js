@@ -1,12 +1,13 @@
 import React from "react";
 
-export const Result = ({ steps, values }) => {
+export const Result = ({ formState }) => {
   return (
     <ul>
-      {Object.keys(steps).map(item => {
+      {Object.keys(formState).map(item => {
+        const { label, value } = formState[item];
         return (
           <li key={item}>
-            Qu. {+item + 1} {steps[item].label} - {values[item]}
+            Qu. {+item + 1} {label} - {value}
           </li>
         );
       })}

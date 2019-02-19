@@ -1,7 +1,7 @@
 import React from "react";
 
-export const Step = ({ step, value, handleChange, currentStep }) => {
-  const { label } = step;
+export const Step = ({ step, handleChange, currentStep }) => {
+  const { label, value } = step;
   const inputId = `input-${currentStep}`;
   const question = `Qu ${currentStep + 1}. ${label}?`;
   return (
