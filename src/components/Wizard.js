@@ -7,6 +7,7 @@ export const Wizard = ({ initialState }) => {
 
   const step = formState[currentStep];
   const isLastStep = () => currentStep === Object.keys(initialState).length;
+  const isFirstStep = () => currentStep === 0;
 
   const handleChange = evt => {
     const { value } = evt.target;
@@ -14,27 +15,37 @@ export const Wizard = ({ initialState }) => {
       ...formState,
       [currentStep]: { ...formState[currentStep], value }
     });
-    console.log(formState);
   };
 
-  const handleClick = evt => {
+  const handleBackClick = evt => {
+    evt.preventDefault();
+    setCurrentStep(currentStep => currentStep - 1);
+  };
+
+  const handleNextClick = evt => {
     evt.preventDefault();
     setCurrentStep(currentStep => currentStep + 1);
   };
-  if (isLastStep()) {
-    return <Result formState={formState} />;
-  }
+
+  const isLast = isLastStep();
+  const isFirst = isFirstStep();
+
   return (
     <form>
       <div>
-        <Step
-          step={step}
-          currentStep={currentStep}
-          handleChange={handleChange}
-        />
+        {isLast ? (
+          <Result formState={formState} />
+        ) : (
+          <Step
+            step={step}
+            currentStep={currentStep}
+            handleChange={handleChange}
+          />
+        )}
       </div>
       <div>
-        <button onClick={handleClick}>Next</button>
+        {!isFirst && <button onClick={handleBackClick}>&lt; Back</button>}
+        {!isLast && <button onClick={handleNextClick}>Next &gt;</button>}
       </div>
     </form>
   );
