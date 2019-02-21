@@ -2,12 +2,12 @@ import React, { useState } from "react";
 import { Step, Result } from "./";
 
 export const Wizard = ({ initialState }) => {
-  const [currentStep, setCurrentStep] = useState(0);
+  const [currentStep, setCurrentStep] = useState(1);
   const [formState, setFormState] = useState(initialState);
 
   const step = formState[currentStep];
-  const isLastStep = () => currentStep === Object.keys(initialState).length;
-  const isFirstStep = () => currentStep === 0;
+  const isLastStep = () => currentStep === Object.keys(initialState).length + 1;
+  const isFirstStep = () => currentStep === 1;
 
   const handleChange = evt => {
     const { value } = evt.target;

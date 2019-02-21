@@ -7,7 +7,7 @@ export const Result = ({ formState }) => {
         const { label, value } = formState[item];
         return (
           <li key={item}>
-            Qu {+item + 1} {label} - {value}
+            Qu {item} {label} - {value}
           </li>
         );
       })}
